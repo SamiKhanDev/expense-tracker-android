@@ -10,8 +10,12 @@ class ExpenseTrackerApp: Application() {
         
         // Initialize locale from saved preferences
         val prefs = getSharedPreferences("LocaleManager", MODE_PRIVATE)
-        val languageCode = prefs.getString("language_code", "en") ?: "en"
-        val localeList = androidx.core.os.LocaleListCompat.forLanguageTags(languageCode)
-        androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(localeList)
+        val languageCode = prefs.getString("language_code", null)
+        
+        // Only set locale if it was previously saved
+        if (languageCode != null) {
+            val localeList = androidx.core.os.LocaleListCompat.forLanguageTags(languageCode)
+            androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(localeList)
+        }
     }
 }

@@ -34,6 +34,7 @@
     <string name="name">नाम</string>
     
     <!-- Categories - Income -->
+    <string name="category_paypal">पेपाल</string>
     <string name="category_salary">वेतन</string>
     <string name="category_freelance">फ्रीलांस</string>
     <string name="category_investments">निवेश</string>
@@ -43,6 +44,8 @@
     
     <!-- Categories - Expense -->
     <string name="category_grocery">किराना</string>
+    <string name="category_netflix">नेटफ्लिक्स</string>
+    <string name="category_starbucks">स्टारबक्स</string>
     <string name="category_rent">किराया</string>
     <string name="category_transport">परिवहन</string>
     <string name="category_utilities">उपयोगिताएं</string>
@@ -52,7 +55,19 @@
     <string name="category_insurance">बीमा</string>
     <string name="category_shopping">खरीदारी</string>
     <string name="category_education">शिक्षा</string>
+    <string name="category_subscriptions">सदस्यता</string>
+    <string name="category_debt">कर्ज भुगतान</string>
+    <string name="category_gifts">उपहार और दान</string>
+    <string name="category_travel">यात्रा</string>
     <string name="category_other_expense">अन्य खर्च</string>
+    
+    <!-- Form -->
+    <string name="enter_amount">राशि दर्ज करें</string>
+    <string name="select_date">तारीख चुनें</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard">डैशबोर्ड</string>
+    <string name="user_name">कोड विथ एफके</string>
     
     <!-- Statistics -->
     <string name="statistics">आंकड़े</string>

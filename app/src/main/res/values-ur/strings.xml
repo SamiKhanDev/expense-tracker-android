@@ -34,6 +34,7 @@
     <string name="name">نام</string>
     
     <!-- Categories - Income -->
+    <string name="category_paypal">پے پال</string>
     <string name="category_salary">تنخواہ</string>
     <string name="category_freelance">فری لانس</string>
     <string name="category_investments">سرمایہ کاری</string>
@@ -43,6 +44,8 @@
     
     <!-- Categories - Expense -->
     <string name="category_grocery">راشن</string>
+    <string name="category_netflix">نیٹ فلیکس</string>
+    <string name="category_starbucks">اسٹار بکس</string>
     <string name="category_rent">کرایہ</string>
     <string name="category_transport">نقل و حمل</string>
     <string name="category_utilities">یوٹیلیٹیز</string>
@@ -52,7 +55,19 @@
     <string name="category_insurance">بیمہ</string>
     <string name="category_shopping">خریداری</string>
     <string name="category_education">تعلیم</string>
+    <string name="category_subscriptions">سبسکرپشنز</string>
+    <string name="category_debt">قرض کی ادائیگی</string>
+    <string name="category_gifts">تحائف اور عطیات</string>
+    <string name="category_travel">سفر</string>
     <string name="category_other_expense">دیگر اخراجات</string>
+    
+    <!-- Form -->
+    <string name="enter_amount">رقم درج کریں</string>
+    <string name="select_date">تاریخ منتخب کریں</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard">ڈیش بورڈ</string>
+    <string name="user_name">کوڈ ود ایف کے</string>
     
     <!-- Statistics -->
     <string name="statistics">اعدادوشمار</string>

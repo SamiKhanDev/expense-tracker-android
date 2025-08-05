@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         localeManager.attachActivity(this)
+        
         setContent {
             val isDarkMode by themeViewModel.isDarkMode.collectAsState()
             

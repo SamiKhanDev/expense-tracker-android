@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import androidx.core.content.edit
 
 @Singleton
 class LocaleManager @Inject constructor(
@@ -32,15 +33,45 @@ class LocaleManager @Inject constructor(
     }
 
     init {
-        // Set initial locale
-        setLocale(getStoredLocale().language)
+        // Set initial locale without recreating activity
+        val storedLocale = getStoredLocale()
+        if (getLocale().language != storedLocale.language) {
+            setLocaleWithoutRecreate(storedLocale.language)
+        }
+    }
+    
+    private fun setLocaleWithoutRecreate(languageCode: String) {
+        // Save to preferences
+        prefs.edit { putString("language_code", languageCode) }
+        
+        // Update locale
+        val newLocale = Locale(languageCode)
+        Locale.setDefault(newLocale)
+        
+        val config = context.resources.configuration
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            config.setLocales(LocaleList(newLocale))
+        } else {
+            config.locale = newLocale
+        }
+        
+        // Update app delegate
+        val localeList = LocaleListCompat.forLanguageTags(languageCode)
+        AppCompatDelegate.setApplicationLocales(localeList)
+        
+        // Update state flow
+        _currentLocale.value = newLocale
+        
+        // Update configuration
+        val newContext = context.createConfigurationContext(config)
+        newContext.resources.updateConfiguration(config, newContext.resources.displayMetrics)
     }
     fun setLocale(languageCode: String) {
         if (languageCode == getLocale().language) {
             return
         }
         // Save to preferences
-        prefs.edit().putString("language_code", languageCode).apply()
+        prefs.edit { putString("language_code", languageCode) }
         
         // Update locale
         val newLocale = Locale(languageCode)
@@ -62,12 +93,14 @@ class LocaleManager @Inject constructor(
         
         // Update configuration and recreate activity
         val newContext = context.createConfigurationContext(config)
-        context.resources.updateConfiguration(config, context.resources.displayMetrics)
+        newContext.resources.updateConfiguration(config, newContext.resources.displayMetrics)
         
         // Recreate the activity to apply changes
         activity?.let { currentActivity ->
-            currentActivity.runOnUiThread {
-                currentActivity.recreate()
+            if (!currentActivity.isFinishing) {
+                currentActivity.runOnUiThread {
+                    currentActivity.recreate()
+                }
             }
         }
     }
