@@ -28,22 +28,16 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
@@ -51,10 +45,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -96,7 +90,7 @@ fun AddExpense(
                 }) {
                 Image(painter = painterResource(id = R.drawable.ic_back), contentDescription = null)
                 ExpenseTextView(
-                    text = "Add ${if (isIncome) "Income" else "Expense"}",
+                    text = stringResource(if (isIncome) R.string.add_income else R.string.add_expense),
                     style = Typography.titleLarge,
                     color = Color.White,
                     modifier = Modifier
@@ -158,41 +152,41 @@ fun DataForm(
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        TitleComponent(title = "name")
+        TitleComponent(title = stringResource(R.string.name))
         ExpenseDropDown(
             if (isIncome) listOf(
-                "Paypal",
-                "Salary",
-                "Freelance",
-                "Investments",
-                "Bonus",
-                "Rental Income",
-                "Other Income"
+                stringResource(R.string.category_paypal),
+                stringResource(R.string.category_salary),
+                stringResource(R.string.category_freelance),
+                stringResource(R.string.category_investments),
+                stringResource(R.string.category_bonus),
+                stringResource(R.string.category_rental),
+                stringResource(R.string.category_other_income)
             ) else listOf(
-                "Grocery",
-                "Netflix",
-                "Rent",
-                "Paypal",
-                "Starbucks",
-                "Shopping",
-                "Transport",
-                "Utilities",
-                "Dining Out",
-                "Entertainment",
-                "Healthcare",
-                "Insurance",
-                "Subscriptions",
-                "Education",
-                "Debt Payments",
-                "Gifts & Donations",
-                "Travel",
-                "Other Expenses"
+                stringResource(R.string.category_grocery),
+                stringResource(R.string.category_netflix),
+                stringResource(R.string.category_rent),
+                stringResource(R.string.category_paypal),
+                stringResource(R.string.category_starbucks),
+                stringResource(R.string.category_shopping),
+                stringResource(R.string.category_transport),
+                stringResource(R.string.category_utilities),
+                stringResource(R.string.category_dining),
+                stringResource(R.string.category_entertainment),
+                stringResource(R.string.category_healthcare),
+                stringResource(R.string.category_insurance),
+                stringResource(R.string.category_subscriptions),
+                stringResource(R.string.category_education),
+                stringResource(R.string.category_debt),
+                stringResource(R.string.category_gifts),
+                stringResource(R.string.category_travel),
+                stringResource(R.string.category_other_expense)
             ),
             onItemSelected = {
                 name.value = it
             })
         Spacer(modifier = Modifier.size(24.dp))
-        TitleComponent("amount")
+        TitleComponent(stringResource(R.string.amount))
         OutlinedTextField(
             value = amount.value,
             onValueChange = { newValue ->
@@ -214,13 +208,13 @@ fun DataForm(
             },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            placeholder = { ExpenseTextView(text = "Enter amount") },
+            placeholder = { ExpenseTextView(text = stringResource(R.string.enter_amount)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = MaterialTheme.colorScheme.primary,
             )
         )
         Spacer(modifier = Modifier.size(24.dp))
-        TitleComponent("date")
+        TitleComponent(stringResource(R.string.date))
         OutlinedTextField(value = if (date.value == 0L) "" else Utils.formatDateToHumanReadableForm(
             date.value
         ),
@@ -233,7 +227,7 @@ fun DataForm(
                 disabledBorderColor = Color.Black, disabledTextColor = Color.Black,
                 disabledPlaceholderColor = Color.Black,
             ),
-            placeholder = { ExpenseTextView(text = "Select date") })
+            placeholder = { ExpenseTextView(text = stringResource(R.string.select_date)) })
         Spacer(modifier = Modifier.size(24.dp))
         Button(
             onClick = {
@@ -248,7 +242,7 @@ fun DataForm(
             }, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(8.dp)
         ) {
             ExpenseTextView(
-                text = "Add ${if (isIncome) "Income" else "Expense"}",
+                text = stringResource(if (isIncome) R.string.add_income else R.string.add_expense),
                 fontSize = 14.sp,
                 color = Color.White
             )
@@ -273,11 +267,11 @@ fun ExpenseDatePickerDialog(
     val selectedDate = datePickerState.selectedDateMillis ?: 0L
     DatePickerDialog(onDismissRequest = { onDismiss() }, confirmButton = {
         TextButton(onClick = { onDateSelected(selectedDate) }) {
-            ExpenseTextView(text = "Confirm")
+            ExpenseTextView(text = stringResource(R.string.confirm))
         }
     }, dismissButton = {
         TextButton(onClick = { onDateSelected(selectedDate) }) {
-            ExpenseTextView(text = "Cancel")
+            ExpenseTextView(text = stringResource(R.string.cancel))
         }
     }) {
         DatePicker(state = datePickerState)
@@ -295,6 +289,7 @@ fun TitleComponent(title: String) {
     Spacer(modifier = Modifier.size(10.dp))
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExpenseDropDown(listOfItems: List<String>, onItemSelected: (item: String) -> Unit) {
     val expanded = remember {

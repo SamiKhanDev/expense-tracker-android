@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation(libs.firebase.database.ktx)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     implementation(libs.dagger.hilt.andriod)
     kapt(libs.dagger.hilt.compiler)

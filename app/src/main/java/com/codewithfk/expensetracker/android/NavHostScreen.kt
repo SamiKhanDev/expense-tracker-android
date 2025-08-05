@@ -26,10 +26,14 @@ import com.codewithfk.expensetracker.android.feature.settings.SettingsScreen
 import com.codewithfk.expensetracker.android.ui.theme.LightPrimary
 import androidx.compose.runtime.rememberCoroutineScope
 import com.codewithfk.expensetracker.android.ui.theme.ThemeViewModel
+import com.codewithfk.expensetracker.android.utils.LocaleManager
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavHostScreen(themeViewModel: ThemeViewModel)
+fun NavHostScreen(
+    themeViewModel: ThemeViewModel,
+    localeManager: LocaleManager
+)
 {
     val navController = rememberNavController()
     var bottomBarVisibility by remember { mutableStateOf(true) }
@@ -43,9 +47,8 @@ fun NavHostScreen(themeViewModel: ThemeViewModel)
         drawerState = drawerState, drawerContent = {
             ModalDrawerSheet {
                 DrawerContent(
-                    navController = navController, themeViewModel = themeViewModel, onCloseDrawer = {
-                        scope.launch { drawerState.close() }
-                    })
+                    themeViewModel = themeViewModel,
+                    localeManager = localeManager)
             }
         }) {
         Scaffold(topBar = {

@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -75,12 +76,12 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                 }) {
                 Column(modifier = Modifier.align(Alignment.CenterStart)) {
                     ExpenseTextView(
-                        text = "Good Afternoon",
+                        text = stringResource(R.string.good_morning),
                         style = Typography.bodyMedium,
                         color = Color.White
                     )
                     ExpenseTextView(
-                        text = "CodeWithFK",
+                        text = stringResource(R.string.user_name),
                         style = Typography.titleLarge,
                         color = Color.White
                     )
@@ -204,7 +205,7 @@ fun CardItem(
         ) {
             Column {
                 ExpenseTextView(
-                    text = "Total Balance",
+                    text = stringResource(R.string.total_balance),
                     style = Typography.titleMedium,
                     color = Color.White
                 )
@@ -228,7 +229,7 @@ fun CardItem(
             CardRowItem(
                 modifier = Modifier
                     .align(Alignment.CenterStart),
-                title = "Income",
+                title = stringResource(R.string.income),
                 amount = income,
                 imaget = R.drawable.ic_income
             )
@@ -236,7 +237,7 @@ fun CardItem(
             CardRowItem(
                 modifier = Modifier
                     .align(Alignment.CenterEnd),
-                title = "Expense",
+                title = stringResource(R.string.expenses),
                 amount = expense,
                 imaget = R.drawable.ic_expense
             )
@@ -250,7 +251,7 @@ fun CardItem(
 fun TransactionList(
     modifier: Modifier,
     list: List<ExpenseEntity>,
-    title: String = "Recent Transactions"
+    title: String = stringResource(R.string.recent_transactions)
 ) {
     LazyColumn(modifier = modifier.padding(horizontal = 16.dp)) {
         item {
@@ -260,9 +261,9 @@ fun TransactionList(
                         text = title,
                         style = Typography.titleLarge,
                     )
-                    if (title == "Recent Transactions") {
+                    if (title == stringResource(R.string.recent_transactions)) {
                         ExpenseTextView(
-                            text = "See all",
+                            text = stringResource(R.string.view_all),
                             style = Typography.bodyMedium,
                             modifier = Modifier.align(Alignment.CenterEnd)
                         )
@@ -273,13 +274,13 @@ fun TransactionList(
         }
         items(list) { item ->
             val icon = Utils.getItemIcon(item)
-            val amount = if (item.type == "Income") item.amount else item.amount * -1
+            val amount = if (item.type == stringResource(R.string.income)) item.amount else item.amount * -1
             TransactionItem(
                 title = item.title,
                 amount = Utils.formatCurrency(amount),
                 icon = icon,
                 date = Utils.formatStringDateToMonthDayYear(item.date),
-                color = if (item.type == "Income") Green else Red
+                color = if (item.type == stringResource(R.string.income)) Green else Red
             )
         }
 

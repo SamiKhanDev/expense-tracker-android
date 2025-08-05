@@ -1,3 +1,83 @@
 <resources>
-    <string name="app_name">Expense Tracker Android</string>
+    <!-- App -->
+    <string name="app_name">Expense Tracker</string>
+    
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="menu">Menu</string>
+    <string name="settings">Settings</string>
+    <string name="save">Save</string>
+    <string name="version_format">Version %1$s</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_stats">Statistics</string>
+    
+    <!-- Home -->
+    <string name="good_morning">Good Morning</string>
+    <string name="total_balance">Total Balance</string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
+
+    <!-- Add Transaction -->
+    <string name="add_expense">Add Expense</string>
+    <string name="add_income">Add Income</string>
+    <string name="amount">Amount</string>
+    <string name="date">Date</string>
+    <string name="category">Category</string>
+    <string name="name">Name</string>
+    
+    <!-- Categories - Income -->
+    <string name="category_paypal">Paypal</string>
+    <string name="category_salary">Salary</string>
+    <string name="category_freelance">Freelance</string>
+    <string name="category_investments">Investments</string>
+    <string name="category_bonus">Bonus</string>
+    <string name="category_rental">Rental Income</string>
+    <string name="category_other_income">Other Income</string>
+    
+    <!-- Categories - Expense -->
+    <string name="category_grocery">Grocery</string>
+    <string name="category_netflix">Netflix</string>
+    <string name="category_rent">Rent</string>
+    <string name="category_starbucks">Starbucks</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_utilities">Utilities</string>
+    <string name="category_dining">Dining Out</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_healthcare">Healthcare</string>
+    <string name="category_insurance">Insurance</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_education">Education</string>
+    <string name="category_subscriptions">Subscriptions</string>
+    <string name="category_debt">Debt Payments</string>
+    <string name="category_gifts">Gifts &amp; Donations</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_other_expense">Other Expenses</string>
+    
+    <!-- Statistics -->
+    <string name="statistics">Statistics</string>
+    <string name="expense_breakdown">Expense Breakdown</string>
+    <string name="top_spending">Top Spending</string>
+    <string name="net_savings">Net Savings</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="currency">Currency</string>
+    <string name="notifications">Notifications</string>
+
+    <!-- Form -->
+    <string name="enter_amount">Enter amount</string>
+    <string name="select_date">Select date</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard">Dashboard</string>
+    <string name="recent_transactions">Recent Transactions</string>
+    <string name="view_all">View All</string>
+    <string name="user_name">CodeWithFK</string>
 </resources>

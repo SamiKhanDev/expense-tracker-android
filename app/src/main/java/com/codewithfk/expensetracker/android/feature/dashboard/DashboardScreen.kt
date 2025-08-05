@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.annotation.StringRes
 import com.codewithfk.expensetracker.android.R
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -54,7 +56,7 @@ fun DashboardScreen(
             ) {
                 Column {
                     Text(
-                        text = "Dashboard",
+                        text = stringResource(R.string.dashboard),
                         style = Typography.headlineMedium,
                         color = Color.White,
                         fontWeight = FontWeight.Bold
@@ -78,19 +80,19 @@ fun DashboardScreen(
                 items(quickActions) { action ->
                     QuickActionButton(
                         icon = action.icon,
-                        label = action.label,
+                        label = stringResource(action.label),
                         onClick = {
                             when (action.label) {
-                                "Add Expense" -> navController.navigate("/add_exp")
-                                "Add Income" -> navController.navigate("/add_income")
-                                "Analytics" -> navController.navigate("/stats") {
+                                R.string.add_expense -> navController.navigate("/add_exp")
+                                R.string.add_income -> navController.navigate("/add_income")
+                                R.string.statistics -> navController.navigate("/stats") {
                                     popUpTo(navController.graph.startDestinationId) {
                                         saveState = true
                                     }
                                     launchSingleTop = true
                                     restoreState = true
                                 }
-                                "Overview" -> navController.navigate("/home") {
+                                R.string.nav_home -> navController.navigate("/home") {
                                     popUpTo(navController.graph.startDestinationId) {
                                         saveState = true
                                     }
@@ -187,12 +189,12 @@ fun DashboardScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Recent Transactions",
+                            text = stringResource(R.string.recent_transactions),
                             style = Typography.titleLarge,
                             fontWeight = FontWeight.Bold
                         )
                         TextButton(onClick = { /* Handle view all click */ }) {
-                            Text("View All")
+                            Text(stringResource(R.string.view_all))
                         }
                     }
                     Spacer(modifier = Modifier.height(8.dp))
@@ -210,14 +212,14 @@ fun DashboardScreen(
 
 data class QuickAction(
     val icon: Int,
-    val label: String
+    @StringRes val label: Int
 )
 
 val quickActions = listOf(
-    QuickAction(R.drawable.ic_expense, "Add Expense"),
-    QuickAction(R.drawable.ic_income, "Add Income"),
-    QuickAction(R.drawable.ic_stats, "Analytics"),
-    QuickAction(R.drawable.ic_home, "Overview")
+    QuickAction(R.drawable.ic_expense, R.string.add_expense),
+    QuickAction(R.drawable.ic_income, R.string.add_income),
+    QuickAction(R.drawable.ic_stats, R.string.statistics),
+    QuickAction(R.drawable.ic_home, R.string.nav_home)
 )
 
 @Composable

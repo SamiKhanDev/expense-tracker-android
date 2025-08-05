@@ -1,23 +1,22 @@
 package com.codewithfk.expensetracker.android.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.codewithfk.expensetracker.android.R
 import com.codewithfk.expensetracker.android.ui.theme.ThemeViewModel
+import com.codewithfk.expensetracker.android.utils.LocaleManager
 
 @Composable
 fun DrawerContent(
-    navController: NavController,
     themeViewModel: ThemeViewModel,
-    onCloseDrawer: () -> Unit
+    localeManager: LocaleManager,
 ) {
     val isDarkMode by themeViewModel.isDarkMode.collectAsState()
 
@@ -27,7 +26,6 @@ fun DrawerContent(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        // Header
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -35,14 +33,13 @@ fun DrawerContent(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Settings",
+                text = stringResource(R.string.settings),
                 style = MaterialTheme.typography.headlineSmall
             )
         }
 
         Divider()
 
-        // Theme Switch
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -62,7 +59,7 @@ fun DrawerContent(
                     tint = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Dark Mode",
+                    text = stringResource(R.string.dark_mode),
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
@@ -74,9 +71,65 @@ fun DrawerContent(
 
         Divider()
 
-        // Version
+        var showLanguageDialog by remember { mutableStateOf(false) }
+        val currentLocale by localeManager.currentLocale.collectAsState()
+        
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+                .clickable { showLanguageDialog = true },
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = stringResource(R.string.language),
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = currentLocale.displayLanguage,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+
+        if (showLanguageDialog) {
+            AlertDialog(
+                onDismissRequest = { showLanguageDialog = false },
+                title = { Text(stringResource(R.string.select_language)) },
+                text = {
+                    Column {
+                        localeManager.getAvailableLanguages().forEach { language ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        localeManager.setLocale(language.code)
+                                        showLanguageDialog = false
+                                    }
+                                    .padding(vertical = 12.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(language.displayName)
+                                if (language.code == currentLocale.language) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_check),
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary
+                                    )
+                                }
+                            }
+                        }
+                    }
+                },
+                confirmButton = { }
+            )
+        }
+
+        Divider()
+
         Text(
-            text = "Version 1.0.0",
+            text = stringResource(R.string.version_format, "1.0.0"),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(vertical = 8.dp)

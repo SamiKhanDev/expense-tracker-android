@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.codewithfk.expensetracker.android.R
@@ -53,7 +54,7 @@ fun StatsScreen(navController: NavController, viewModel: StatsViewModel= hiltVie
                 colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
             )
             ExpenseTextView(
-                text = "Statistics",
+                text = stringResource(R.string.statistics),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier

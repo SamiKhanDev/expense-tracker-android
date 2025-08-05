@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">خرچہ ٹریکر</string>
+    
+    <!-- Common -->
+    <string name="back">واپس</string>
+    <string name="menu">مینو</string>
+    <string name="settings">ترتیبات</string>
+    <string name="save">محفوظ کریں</string>
+    <string name="cancel">منسوخ کریں</string>
+    <string name="confirm">تصدیق کریں</string>
+    <string name="version_format">ورژن %1$s</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">ہوم</string>
+    <string name="nav_dashboard">ڈیش بورڈ</string>
+    <string name="nav_stats">اعدادوشمار</string>
+    
+    <!-- Home -->
+    <string name="good_morning">صبح بخیر</string>
+    <string name="total_balance">کل بیلنس</string>
+    <string name="income">آمدنی</string>
+    <string name="expenses">اخراجات</string>
+    <string name="recent_transactions">حالیہ لین دین</string>
+    <string name="view_all">سب دیکھیں</string>
+    
+    <!-- Add Transaction -->
+    <string name="add_expense">خرچہ شامل کریں</string>
+    <string name="add_income">آمدنی شامل کریں</string>
+    <string name="amount">رقم</string>
+    <string name="date">تاریخ</string>
+    <string name="category">زمرہ</string>
+    <string name="name">نام</string>
+    
+    <!-- Categories - Income -->
+    <string name="category_salary">تنخواہ</string>
+    <string name="category_freelance">فری لانس</string>
+    <string name="category_investments">سرمایہ کاری</string>
+    <string name="category_bonus">بونس</string>
+    <string name="category_rental">کرایہ کی آمدنی</string>
+    <string name="category_other_income">دیگر آمدنی</string>
+    
+    <!-- Categories - Expense -->
+    <string name="category_grocery">راشن</string>
+    <string name="category_rent">کرایہ</string>
+    <string name="category_transport">نقل و حمل</string>
+    <string name="category_utilities">یوٹیلیٹیز</string>
+    <string name="category_dining">باہر کھانا</string>
+    <string name="category_entertainment">تفریح</string>
+    <string name="category_healthcare">صحت</string>
+    <string name="category_insurance">بیمہ</string>
+    <string name="category_shopping">خریداری</string>
+    <string name="category_education">تعلیم</string>
+    <string name="category_other_expense">دیگر اخراجات</string>
+    
+    <!-- Statistics -->
+    <string name="statistics">اعدادوشمار</string>
+    <string name="expense_breakdown">اخراجات کی تفصیل</string>
+    <string name="top_spending">سب سے زیادہ خرچہ</string>
+    <string name="net_savings">خالص بچت</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">ڈارک موڈ</string>
+    <string name="language">زبان</string>
+    <string name="select_language">زبان منتخب کریں</string>
+    <string name="currency">کرنسی</string>
+    <string name="notifications">نوٹیفیکیشنز</string>
+</resources>

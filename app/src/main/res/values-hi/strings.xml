@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">खर्च ट्रैकर</string>
+    
+    <!-- Common -->
+    <string name="back">वापस</string>
+    <string name="menu">मेनू</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="save">सहेजें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="confirm">पुष्टि करें</string>
+    <string name="version_format">संस्करण %1$s</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">होम</string>
+    <string name="nav_dashboard">डैशबोर्ड</string>
+    <string name="nav_stats">आंकड़े</string>
+    
+    <!-- Home -->
+    <string name="good_morning">सुप्रभात</string>
+    <string name="total_balance">कुल बैलेंस</string>
+    <string name="income">आय</string>
+    <string name="expenses">खर्च</string>
+    <string name="recent_transactions">हाल के लेनदेन</string>
+    <string name="view_all">सभी देखें</string>
+    
+    <!-- Add Transaction -->
+    <string name="add_expense">खर्च जोड़ें</string>
+    <string name="add_income">आय जोड़ें</string>
+    <string name="amount">राशि</string>
+    <string name="date">तारीख</string>
+    <string name="category">श्रेणी</string>
+    <string name="name">नाम</string>
+    
+    <!-- Categories - Income -->
+    <string name="category_salary">वेतन</string>
+    <string name="category_freelance">फ्रीलांस</string>
+    <string name="category_investments">निवेश</string>
+    <string name="category_bonus">बोनस</string>
+    <string name="category_rental">किराये की आय</string>
+    <string name="category_other_income">अन्य आय</string>
+    
+    <!-- Categories - Expense -->
+    <string name="category_grocery">किराना</string>
+    <string name="category_rent">किराया</string>
+    <string name="category_transport">परिवहन</string>
+    <string name="category_utilities">उपयोगिताएं</string>
+    <string name="category_dining">बाहर खाना</string>
+    <string name="category_entertainment">मनोरंजन</string>
+    <string name="category_healthcare">स्वास्थ्य देखभाल</string>
+    <string name="category_insurance">बीमा</string>
+    <string name="category_shopping">खरीदारी</string>
+    <string name="category_education">शिक्षा</string>
+    <string name="category_other_expense">अन्य खर्च</string>
+    
+    <!-- Statistics -->
+    <string name="statistics">आंकड़े</string>
+    <string name="expense_breakdown">खर्च का विवरण</string>
+    <string name="top_spending">शीर्ष खर्च</string>
+    <string name="net_savings">कुल बचत</string>
+    
+    <!-- Settings -->
+    <string name="dark_mode">डार्क मोड</string>
+    <string name="language">भाषा</string>
+    <string name="select_language">भाषा चुनें</string>
+    <string name="currency">मुद्रा</string>
+    <string name="notifications">सूचनाएं</string>
+</resources>

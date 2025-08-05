@@ -13,13 +13,18 @@ import androidx.compose.ui.Modifier
 import com.codewithfk.expensetracker.android.ui.theme.ExpenseTrackerAndroidTheme
 import com.codewithfk.expensetracker.android.ui.theme.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import com.codewithfk.expensetracker.android.utils.LocaleManager
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val themeViewModel: ThemeViewModel by viewModels()
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        localeManager.attachActivity(this)
         setContent {
             val isDarkMode by themeViewModel.isDarkMode.collectAsState()
             
@@ -28,7 +33,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavHostScreen(themeViewModel = themeViewModel)
+                    NavHostScreen(
+                        themeViewModel = themeViewModel,
+                        localeManager = localeManager
+                    )
                 }
             }
         }
